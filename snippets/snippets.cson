@@ -16,3 +16,21 @@
       // no rows found
       endif;
       """
+  'gallery':
+    'prefix': 'gallery'
+    'body': """
+    $gallery = get_field(\'${1:gallery}\');
+
+    if( $gallery ): ?>
+        <ul>
+            <?php foreach( $gallery as $image ): ?>
+                <li>
+                    <a href="<?php echo $image['url']; ?>">
+                         <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" />
+                    </a>
+                    <p><?php echo $image['caption']; ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+      """

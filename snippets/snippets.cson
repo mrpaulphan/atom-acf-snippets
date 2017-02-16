@@ -1,0 +1,18 @@
+'.source.php':
+  'get_field':
+    'prefix': 'gf'
+    'body': '$field = get_field(\'${1:field_name}\',\'${1:post_id}\',\'${1:format_value}\');'
+  'repeater':
+    'prefix': 'repeater'
+    'body': """
+      // check if the repeater field has rows of data
+      if( have_rows(\'${1:repeater_field_name}\') ):
+        // loop through the rows of data
+        while ( have_rows(\'${1:repeater_field_name}\') ) : the_row();
+          // display a sub field value
+          the_sub_field(\'sub_field_name\');
+        endwhile;
+      else :
+      // no rows found
+      endif;
+      """
